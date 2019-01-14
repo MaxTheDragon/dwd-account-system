@@ -10,6 +10,10 @@
     {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/normalize.css') }}">
     <link rel="stylesheet" href="{{ asset('css/boilerplate.css') }}">
+
+    {% block font %}
+    <link rel="stylesheet" href="{{ asset('css/font.css') }}">
+    {% endblock %}
     {% endblock %}
 </head>
 <body>
