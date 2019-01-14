@@ -1,0 +1,33 @@
+{% extends 'index.html.twig' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block main %}
+    {% if app.request.method == 'POST' %}
+    <form action="{{ path('app_confirm_delete') }}" method="post">
+        <h1 class="h3 mb-3 font-weight-normal">Confirm account deletion</h1>
+        {% if error|default %}
+            <div class="alert alert-danger">{{ error }}</div>
+        {% endif %}
+
+        <p>Warning: You are about to delete your account! All information related to your account will be deleted permanently! Confirm by entering our password:</p>
+
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('confirmdelete') }}">
+
+        <div class="submit"><button class="btn btn-lg btn-primary alert-danger" type="submit">Delete your account</button></div>
+    </form>
+    {% else %}
+    <form method="post">
+        <h1 class="h3 mb-3 font-weight-normal">Profile for {{ app.user.email }}</h1>
+
+        <p><strong>Email:</strong> {{ app.user.email }}</p>
+        <p><strong>Full name:</strong> {{ app.user.fullName }}</p>
+        <p><strong>Company name:</strong> {{ app.user.companyName }}</p>
+        <p><strong>Billing address:</strong><br>{{ app.user.billingAddress }}</p>
+
+        <div class="submit"><button class="btn btn-lg btn-primary alert-danger" type="submit">Delete your account</button></div>
+    </form>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,6 @@
+# https://packagist.org/packages/specshaper/gdpr-bundle
+parameters:
+    env(ENCRYPT_KEY): ~
+
+spec_shaper_encrypt:
+    is_disabled: false
