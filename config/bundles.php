@@ -14,4 +14,7 @@ return [
     Symfony\Bundle\DebugBundle\DebugBundle::class => ['dev' => true, 'test' => true],
     Symfony\Bundle\MakerBundle\MakerBundle::class => ['dev' => true],
     Symfony\Bundle\WebServerBundle\WebServerBundle::class => ['dev' => true],
+    Roromix\Bundle\SpreadsheetBundle\RoromixSpreadsheetBundle::class => ['all' => true],
+    SpecShaper\EncryptBundle\SpecShaperEncryptBundle::class => ['all' => true],
+    SpecShaper\GdprBundle\SpecShaperGdprBundle::class => ['all' => true],
 ];

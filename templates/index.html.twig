@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}DWD Account System{% endblock %}
+{% block description %}A secure and GDPR-compliant account system for a website.{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+{% endblock %}
+
+{% block header %}
+{% if app.user %}
+    <button onclick="location.href='{{ path('app_logout') }}';">{% trans %}Logout{% endtrans %}</button>
+    <button onclick="location.href='{{ path('app_profile') }}';">{% trans %}Profile{% endtrans %}</button>
+    <span>Signed in as: {{ app.user.email }}</span>
+{% else %}
+    <button onclick="location.href='{{ path('app_register') }}';">{% trans %}Register{% endtrans %}</button>
+    <button onclick="location.href='{{ path('app_login') }}';">{% trans %}Login{% endtrans %}</button>
+{% endif %}
+{% endblock %}
+
+{% block main %}<p style="font-size: 24px; font-weight: bold; text-align: center">Website</p>{% endblock %}

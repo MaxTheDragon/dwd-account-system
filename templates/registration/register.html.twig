@@ -1,0 +1,20 @@
+{% extends 'index.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block container %}
+    {{ form_start(registrationForm) }}
+        <h1 class="h3 mb-3 font-weight-normal">Register</h1>
+
+        {{ form_row(registrationForm.email) }}
+        {{ form_row(registrationForm.plainPassword) }}
+        {{ form_row(registrationForm.fullName) }}
+        {{ form_row(registrationForm.companyName) }}
+        {{ form_row(registrationForm.billingAddress) }}
+
+        <div class="submit">
+            <button class="btn btn-lg btn-primary" type="submit">Register</button>
+            <button class="btn btn-lg btn-primary alert-danger" onclick="location.href='{{ path('app_main_index') }}';" type="button">Back</button>
+        </div>
+    {{ form_end(registrationForm) }}
+{% endblock %}

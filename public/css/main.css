@@ -1,0 +1,77 @@
+body {
+    margin: 0;
+    background: #999;
+}
+
+a { text-decoration: none; }
+
+header {
+    height: 3em;
+    background: white;
+}
+
+button, header span, #container form div label {
+    display: block;
+    line-height: 1em;
+    margin: 0.25em;
+}
+
+button, header span {
+    float: right;
+    padding: .75em 1em;
+}
+
+button {
+    background: #28b;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#container form div label {
+    float: left;
+    width: 10em;
+    padding: .75em 0em;
+}
+
+button:hover {
+    background: #4ad;
+}
+
+input {
+    line-height: 1em;
+    margin: 0.25em;
+    padding: .75em .5em;
+}
+
+div.alert {
+    border: 1px solid;
+    padding: .25em;
+    margin: 1em 0;
+}
+
+div.alert-danger {
+    border-color: #f66;
+    background: #fcc;
+}
+
+button.alert-danger {
+    background: #f33;
+}
+
+button.alert-danger:hover {
+    background: #f66;
+}
+
+#inputEmail, #inputPassword { width: 14em }
+
+#container form {
+    width: 45em;
+    margin: 10em auto;
+    padding: 1em;
+    background: #ccc;
+}
+
+#container div.submit {
+    height: 3em;
+}

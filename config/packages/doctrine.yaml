@@ -16,6 +16,8 @@ doctrine:
             collate: utf8mb4_unicode_ci
 
         url: '%env(resolve:DATABASE_URL)%'
+        types:
+            personal_data:  SpecShaper\GdprBundle\Types\PersonalDataType
     orm:
         auto_generate_proxy_classes: true
         naming_strategy: doctrine.orm.naming_strategy.underscore
