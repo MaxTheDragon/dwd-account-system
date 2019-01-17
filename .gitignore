@@ -20,3 +20,6 @@
 ###> PhpStorm project files ###
 /.idea
 ###< PhpStorm project files ###
+/.bash_history
+/.composer/
+/.env
