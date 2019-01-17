@@ -1,0 +1,56 @@
+version: '3.5'
+# Used for development purposes only
+services:
+  mw_dwdas_web:
+    depends_on:
+      - mw_dwdas_phpfpm
+    image: nginx:alpine
+    container_name: mw_dwdas_web
+    links:
+      - mw_dwdas_phpfpm
+    ports:
+      - "8001:80"
+    networks:
+      - mw_dwdas
+    working_dir: /app
+    volumes:
+      - ../nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ../nginx/log:/var/log/nginx
+      - ../../:/app
+  mw_dwdas_phpfpm:
+    build:
+      context: .
+      args:
+        GROUPID: ${group}
+        USERID: ${user}
+      dockerfile: php-7.2-fpm-custom/Dockerfile
+    env_file: .env
+    container_name: mw_dwdas_phpfpm
+    links:
+      - mw_dwdas_db
+    working_dir: /app
+    volumes:
+      - ../../:/app
+      - ../php/log:/var/log/php_errors
+      - ../php/php.ini:/usr/local/etc/php/php.ini
+    networks:
+      - mw_dwdas
+  mw_dwdas_db:
+    image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=mypassword
+    container_name: mw_dwdas_db
+    volumes:
+      #The database is stored in the mysql folder outside of the container to keep the container stateless.
+      - ../mysql:/var/lib/mysql
+      #The MariaDB configuration file (my.cnf) is hosted outside of the container for easy altering and keeping the
+      #container stateless. It is hosted in the etc/mysql folder.
+      - ../etc/mysql/my.cnf:/etc/mysql/my.cnf
+    ports:
+      - "53306:3306"
+    networks:
+      - mw_dwdas
+
+networks:
+  mw_dwdas:
+    name: mw_dwdas
